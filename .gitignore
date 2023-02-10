@@ -1,2 +1,7 @@
 # editor
 /.idea/
+
+
+# Added by cargo
+
+/target
