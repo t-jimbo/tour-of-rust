@@ -1,9 +1,12 @@
 /*
  * main function
  */
+mod fizz_buzz;
+
 fn main() {
-    let name = "taro";
-    hello(name)
+    hello("taro");
+
+    fizz_buzz::fizz_buzz();
 }
 
 // print hello
