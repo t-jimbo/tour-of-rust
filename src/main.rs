@@ -1,6 +1,3 @@
-/*
- * main function
- */
 mod binary_search;
 mod fizz_buzz;
 mod sort;
@@ -16,5 +13,9 @@ fn main() {
 
     let arr = &mut [5, 3, 2, 4, 1, 6, 9, 8, 7, 10];
     sort::bubble_sort(arr);
+    println!("{:?}", arr);
+
+    let arr = &mut [5, 3, 2, 4, 1, 6, 9, 8, 7, 10];
+    sort::quick_sort(arr);
     println!("{:?}", arr);
 }
