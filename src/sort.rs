@@ -1,4 +1,14 @@
-pub fn bubble_sort(nums: &mut [i32]) {
+fn main() {
+    let arr = &mut [5, 3, 2, 4, 1, 6, 9, 8, 7, 10];
+    bubble_sort(arr);
+    println!("{:?}", arr);
+
+    let arr = &mut [25, 13, 20, 4, 1, 16, 29, 89, 10, 70, 10];
+    quick_sort(arr);
+    println!("{:?}", arr);
+}
+
+fn bubble_sort(nums: &mut [i32]) {
     for i in 0..nums.len() {
         for j in (i + 1)..nums.len() {
             if nums[i] > nums[j] {
@@ -8,7 +18,7 @@ pub fn bubble_sort(nums: &mut [i32]) {
     }
 }
 
-pub fn quick_sort(nums: &mut [i32]) {
+fn quick_sort(nums: &mut [i32]) {
     let len = nums.len();
     if len == 2 {
         if nums[0] > nums[1] {
