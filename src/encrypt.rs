@@ -28,11 +28,12 @@ fn num_to_char(num: &str) -> &str {
         ("24".to_owned(), "X"),
         ("25".to_owned(), "Y"),
         ("26".to_owned(), "Z"),
-    ].into_iter().collect::<HashMap<_,_>>();
+    ]
+    .into_iter()
+    .collect::<HashMap<_, _>>();
 
     return hash.get(num).unwrap();
 }
-
 
 pub fn convert(input: &str) -> String {
     let mut s = input.to_string();
@@ -42,9 +43,53 @@ pub fn convert(input: &str) -> String {
 
     let mut res = String::new();
     for i in (0..s.len()).step_by(2) {
-        let num = &s[i..i+2];
+        let num = &s[i..i + 2];
         res = res + num_to_char(num);
     }
 
     return res;
+}
+
+// Find the product of prime numbers by brute force
+fn calculate_p_q(n: u32) -> (u32, u32) {
+    let mut p = 0;
+    let mut q = 0;
+    for i in 2..n {
+        if n % i == 0 {
+            p = i;
+            q = n / i;
+            break;
+        }
+    }
+
+    if p == 0 || q == 0 {
+        panic!("p and q not found");
+    }
+
+    return (p, q);
+}
+
+fn calculate_d(e: u32, p: u32, q: u32) -> u32 {
+    let mut n = 1;
+    while (n * (p - 1) * (q - 1) + 1) % e != 0 {
+        n += 1;
+    }
+    return (n * (p - 1) * (q - 1) + 1) / e;
+}
+
+fn calculate_m(c: u32, d: u32, n: u32) -> u32 {
+    let mut m = 1;
+    for _ in 0..d {
+        m = (m * c) % n
+    }
+    return m;
+}
+
+pub fn rsa_decrypt(n: u32, e: u32, c: u32) -> (String, u32, u32, u32) {
+    let (p, q) = calculate_p_q(n);
+    let d = calculate_d(e, p, q);
+    let m = calculate_m(c, d, n);
+    let word = convert(&m.to_string());
+
+    return (word, p, q, d);
 }
