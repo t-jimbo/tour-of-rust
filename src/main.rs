@@ -1,6 +1,7 @@
 mod binary_search;
 mod fizz_buzz;
 mod sort;
+mod encrypt;
 
 fn main() {
     fizz_buzz::fizz_buzz(15);
@@ -18,4 +19,7 @@ fn main() {
     let arr = &mut [25, 13, 20, 4, 1, 16, 29, 89, 10, 70, 10];
     sort::quick_sort(arr);
     println!("{:?}", arr);
+
+    let converted = encrypt::convert("20050308");
+    println!("{}", converted);
 }
