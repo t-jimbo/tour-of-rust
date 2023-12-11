@@ -28,7 +28,7 @@ pub fn quick_sort(nums: &mut [i32]) {
         while left < len && nums[left] <= p {
             left += 1;
         }
-        while right >= 0 && nums[right] > p {
+        while nums[right] > p {
             right -= 1;
         }
         if left < right {
