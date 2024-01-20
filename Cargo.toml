@@ -8,6 +8,10 @@ name = "sort"
 path = "src/sort.rs"
 
 [[bin]]
+name = "bit"
+path = "src/bit.rs"
+
+[[bin]]
 name = "guessing_game"
 path = "src/guessing_game.rs"
 
